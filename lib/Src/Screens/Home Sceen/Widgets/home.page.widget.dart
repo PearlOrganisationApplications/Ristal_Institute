@@ -3,7 +3,8 @@ import 'package:ristal_institute/utils/Constant/constant.dart';
 
 Widget firstlist(String imgVal, String text) {
   return Container(
-    width: 80.0,
+
+    width: double.infinity,
     child: Column(
       children: <Widget>[
         Padding(

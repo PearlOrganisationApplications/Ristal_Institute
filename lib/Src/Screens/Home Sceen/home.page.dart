@@ -1,8 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
 import 'package:ristal_institute/Src/Screens/Contact%20Screen/Widget/contact.widget.dart';
+import 'package:ristal_institute/Src/Screens/Course/course.page.dart';
 import 'package:ristal_institute/Src/Screens/Home%20Sceen/Widgets/home.page.widget.dart';
+import 'package:ristal_institute/Src/Screens/Profile/profile.screen.dart';
 import 'package:ristal_institute/utils/Constant/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,6 +13,7 @@ import '../Contact Screen/contact.screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  final String userName = "Anurag";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -27,19 +31,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Page"),
+        title: const Text("Restil University"),
         // automaticallyImplyLeading: false,
       ),
       drawer: Drawer(
-        backgroundColor: Colors.black38,
+        backgroundColor: Colors.black,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             Container(
               height: 250,
-              child: DrawerHeader(
-                decoration: const BoxDecoration(color: AppColors.kPrimaryColor),
-                child: firstlist("assets/images/Logo.PNG", "Sagar Bisht"),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                child: DrawerHeader(
+                  decoration:
+                      const BoxDecoration(color: AppColors.kPrimaryColor),
+                  child: firstlist("assets/images/Logo.PNG", widget.userName),
+                ),
               ),
             ),
             drawerList(
@@ -57,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => const HomeScreen()));
+                        builder: (BuildContext context) =>
+                            const CourseScreen()));
               },
             ),
             drawerList(
