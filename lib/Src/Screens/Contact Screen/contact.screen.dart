@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -150,13 +152,13 @@ class _ContactScreenState extends State<ContactScreen> {
             ElevatedButton(onPressed: send, style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white10,
               backgroundColor: Colors.green,
-              minimumSize: Size(90, 40),
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              minimumSize: const Size(90, 40),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
             ),), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
             ),
-            Spacer(flex: 1,),
+            const Spacer(flex: 1,),
             Padding(
               padding: const EdgeInsets.only(left: 50.0),
               child: Column(

@@ -8,7 +8,7 @@ import '../Home Sceen/home.screen.dart';
 import 'Widget/costume.login.widget.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
