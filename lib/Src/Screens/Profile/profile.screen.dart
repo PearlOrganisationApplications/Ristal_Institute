@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ristal_institute/Src/Screens/Home%20Sceen/Widgets/home.page.widget.dart';
 import 'package:ristal_institute/Src/Screens/Profile/Widget/edit.profile.dart';
 import 'package:ristal_institute/Src/Screens/Profile/Widget/profile.screen.widget.dart';
+import 'package:ristal_institute/Src/Widget/custom_appbar.dart';
+import 'package:ristal_institute/utils/Constant/App%20Key/key.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -13,11 +15,14 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   String? userName;
+  String? userEmail;
 
   Future getName() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    userName = preferences.getString("username");
+    userName = preferences.getString(AppKeys.userData);
+    userEmail = preferences.getString(AppKeys.userEmail);
     setState(() {
+      userEmail = userEmail;
       userName = userName;
     });
   }
@@ -31,6 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar.customAppBarWithBack(title: "Profile"),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -54,14 +60,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                profileCard(() {}, Icons.email,
-                    "vivekyadav@pearlorganisation.com", "Student Email"),
+                profileCard(
+                    () {}, Icons.email, userEmail.toString(), "Student Email"),
                 profileCard(() {}, Icons.numbers, "Enrollment Number",
                     "Student Enrollment"),
                 profileCard(
                     () {}, Icons.class_rounded, "BSc CS", "Student Course"),
                 profileCard(
                     () {}, Icons.school_rounded, "Computer", "Course Branch"),
+                SizedBox(
+                    height: 50,
+                    width: 100,
+                    child: ElevatedButton(
+                        onPressed: () {}, child: const Text("Sign-out")))
               ],
             );
           },

@@ -4,14 +4,41 @@ import 'package:provider/provider.dart';
 import '../../Core/change.notifier.dart';
 import '../../Widget/custom.text.field.dart';
 import '../../Widget/dimension.widget.dart';
-import '../Home Sceen/home.page.dart';
+import '../Home Sceen/home.screen.dart';
 import 'Widget/costume.login.widget.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController userEmailController = TextEditingController();
+
   final TextEditingController userPassController = TextEditingController();
+  bool isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
+
+
+
+  ///**** Create Static Login Function
+  void login() {
+    if (_formKey.currentState!.validate()) {
+      isLoading = true;
+      setState(() {});
+      Future.delayed(const Duration(seconds: 2), () {
+        isLoading = false;
+        setState(() {});
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-                          child: CustomTextField.customTextField(
+                          child: CustomTextField.customEmailField(
                             textEditingController: userEmailController,
                             hintText: 'Enter an email',
                             validator: (val) =>
@@ -61,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-                          child: CustomTextField.customTextField(
+                          child: CustomTextField.customPasswordField(
                             textEditingController: userPassController,
                             hintText: 'Enter a password',
                             validator: (val) =>
@@ -73,17 +100,18 @@ class LoginScreen extends StatelessWidget {
                   ),
                   vSizedBox2,
                   MaterialButton(
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    height: MediaQuery.of(context).size.height * 0.06,
                     minWidth: MediaQuery.of(context).size.width * 0.8,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                     onPressed: () async {
-                      _userLogin();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
+                      // _userLogin();
+                      login();
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const HomeScreen()));
                     },
                     color: Colors.greenAccent,
                     child: const Text(

@@ -28,11 +28,14 @@ class _SplashScreenState extends State<SplashScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Center(
-              child: Image.asset(
+              child: Hero(
+                tag: "logo",
+                child: Image.asset(
             "assets/images/Logo.PNG",
             height: 200,
             width: 200,
-          )),
+          ),
+              )),
         ],
       ),
     );

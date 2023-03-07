@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ristal_institute/Src/Screens/Profile/profile.screen.dart';
+import 'package:ristal_institute/utils/Constant/App%20Key/key.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../utils/Constant/constant.dart';
 
@@ -8,10 +9,19 @@ class ProfileEdit {
   static Future profileUpPopup(BuildContext context) {
     SharedPreferences prefs;
     TextEditingController nameChangeController = TextEditingController();
+    TextEditingController emailChangeController = TextEditingController();
 
     save() async {
       prefs = await SharedPreferences.getInstance();
-      prefs.setString("username", nameChangeController.text.toString());
+      prefs.setString(
+        AppKeys.userData,
+        nameChangeController.text.toString(),
+      );
+    }
+
+    emailSave() async {
+      prefs = await SharedPreferences.getInstance();
+      prefs.setString(AppKeys.userEmail, emailChangeController.text.toString());
     }
 
     return showGeneralDialog(
@@ -34,7 +44,7 @@ class ProfileEdit {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  height: 230,
+                  height: 500,
                   child: Column(
                     children: [
                       Padding(
@@ -80,10 +90,36 @@ class ProfileEdit {
                                 fontSize: 15.0,
                               ),
                             ),
-                            const SizedBox(width: 5.0),
+                            const SizedBox(height: 20),
+                            TextFormField(
+                              controller: emailChangeController,
+                              keyboardType: TextInputType.text,
+                              decoration: const InputDecoration(
+                                label: Text("Email"),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12),
+                                  ),
+                                  borderSide: BorderSide(
+                                    width: 1.5,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
+                                  ),
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color: AppColors.kSecondaryColor,
+                                fontSize: 15.0,
+                              ),
+                            ),
+                            const SizedBox(width: 15.0),
                             ElevatedButton(
                               onPressed: () {
                                 save();
+                                emailSave();
                               },
                               child: const Text(
                                 'Save',

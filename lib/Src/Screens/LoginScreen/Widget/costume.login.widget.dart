@@ -9,10 +9,13 @@ Widget welcomeTextLogin() {
     children: [
       vSizedBox5,
       vSizedBox1,
-      Image.asset(
-        "assets/images/Logo.PNG",
-        height: 150,
-        width: 150,
+      Hero(
+        tag: "logo",
+        child: Image.asset(
+          "assets/images/Logo.PNG",
+          height: 150,
+          width: 150,
+        ),
       ),
 
       Padding(
@@ -42,7 +45,7 @@ Widget welcomeTextLogin() {
                       ),
                     ),
                     TextSpan(
-                      text: 'Ristel University',
+                      text: 'Ristal University',
                       style: TextStyle(
                         color: Colors.green,
                         fontSize: 28.0,

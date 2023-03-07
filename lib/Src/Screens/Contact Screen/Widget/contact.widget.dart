@@ -7,3 +7,4 @@ import 'package:flutter/material.dart';
     child: Image(image: AssetImage(image),height: 25,width: 25,)
   );
 }
+customEmailSender(){}
