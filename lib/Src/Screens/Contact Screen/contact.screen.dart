@@ -63,15 +63,18 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: CustomAppBar.customAppBarWithBack(title: "Contact"),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 24.0),
+      appBar: CustomAppBar.customAppBarWithBack(title: "Contact Us"),
+      body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Padding(
+
+
+            ///Commented recipient TextField for Single mail address
+            /*Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
@@ -82,11 +85,26 @@ class _ContactScreenState extends State<ContactScreen> {
                   labelText: 'Recipient',
                 ),
               ),
+            ),*/
+
+            Container(
+              padding: EdgeInsets.only(bottom: 32.0),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: Colors.green, width: 0)),
+              ),
+                height: 250,
+                width: double.infinity,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(40)),
+                    child: Image.asset("assets/images/contact_us.jpg", fit: BoxFit.fill,)
+                )
             ),
+
+            //Spacer(flex: 1),
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
               child: TextField(
-                autofocus: true,
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
                 controller: _subjectController,
@@ -97,44 +115,48 @@ class _ContactScreenState extends State<ContactScreen> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                  controller: _bodyController,
-                  maxLines: null,
-                  expands: true,
-                  textAlignVertical: TextAlignVertical.top,
-                  decoration: const InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    hintText: "Write message here...",
-                    hintStyle: TextStyle(
-                      // color: AppColors.blueZodiac,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+              child: TextField(
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.done,
+                controller: _bodyController,
+                maxLines: 5,
+                minLines: 3,
+                //expands: true,
+                style: const TextStyle(fontSize: 18),
+                textAlignVertical: TextAlignVertical.top,
+                decoration: const InputDecoration(
+
+                  border: OutlineInputBorder(),
+                  labelText: 'Message',
+                  alignLabelWithHint: true,
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  hintText: "Write message here...",
+                  hintStyle: TextStyle(
+                    // color: AppColors.blueZodiac,
+                  ),
+                  /*enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(12),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(12),
-                      ),
-                      borderSide: BorderSide(
-                        width: 1.5,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
+                    borderSide: BorderSide(
+                      width: 1.5,
                     ),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(8),
+                    ),
+                  ),*/
                 ),
               ),
             ),
-            CheckboxListTile(
+
+
+            ///Commented Checkbox ListTile for no use in this screen
+            /*CheckboxListTile(
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 0.0, horizontal: 32.0),
               title: const Text('HTML'),
@@ -146,18 +168,27 @@ class _ContactScreenState extends State<ContactScreen> {
                 }
               },
               value: isHTML,
-            ),
-            ElevatedButton(onPressed: send, style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white10,
-              backgroundColor: Colors.green,
-              minimumSize: Size(90, 40),
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            ),), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
-            ),
-            Spacer(flex: 1,),
+            ),*/
+
+
             Padding(
+              padding: const EdgeInsets.symmetric(vertical: 32.0),
+              child: ElevatedButton(onPressed: send, style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white10,
+                backgroundColor: Colors.green,
+                minimumSize: Size(90, 40),
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              ),), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
+              ),
+            ),
+
+            //Spacer(flex: 2),
+
+
+            ///No use of Address in this Screen
+            /*Padding(
               padding: const EdgeInsets.only(left: 50.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,18 +248,10 @@ class _ContactScreenState extends State<ContactScreen> {
                   ),
                 ],
               ),
-            ),
+            ),*/
           ],
         ),
       ),
     );
-  }
-}
-
-Future<void> _launchURL(String url) async {
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url));
-  } else {
-    print("Could Not Launch $url");
   }
 }

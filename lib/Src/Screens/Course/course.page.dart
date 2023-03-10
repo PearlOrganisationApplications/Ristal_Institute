@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ristal_institute/Src/Screens/Course/Widgets/course.widget.dart';
 import 'package:ristal_institute/Src/Screens/Course/about.course.dart';
@@ -25,6 +27,18 @@ class _CourseScreenState extends State<CourseScreen> {
   @override
   initState() {
     super.initState();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.green,
+      ));
+    });
+
     switch(widget.courseType){
       case 'Web Development': {
 //Course Instructor Names
@@ -119,7 +133,9 @@ class _CourseScreenState extends State<CourseScreen> {
       body: Column(
         children: [
           Container(
-            color: Colors.green,
+            decoration: BoxDecoration(
+                color: Colors.green,
+                border: Border.all(color: Colors.green, width: 0)),
             width: double.infinity,
             child: Column(
               children: [
@@ -129,12 +145,26 @@ class _CourseScreenState extends State<CourseScreen> {
             ),
           ),
           Container(
-            width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.green, width: 0)),
+              ),
+              width: double.infinity,
               child: SvgPicture.asset("assets/svg/top_wave.svg", height: 100, fit: BoxFit.fitWidth,)),
           Expanded(
-            child: LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraint) {
-                return Row(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Card(
+                elevation: 20,
+                //color: Color(0x9BB9F6B2),
+                shadowColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                /*decoration: BoxDecoration(
+                    color: Color(0x9BB9F6B2),
+                    border: Border.symmetric(horizontal: BorderSide(color: Colors.black12, width: 1))
+                ),*/
+                child: Row(
                   children: <Widget>[
                     Expanded(
                       child: ListView.builder(
@@ -149,8 +179,8 @@ class _CourseScreenState extends State<CourseScreen> {
                       ),
                     ),
                   ],
-                );
-              },
+                ),
+              ),
             ),
           ),
           Container(
@@ -159,5 +189,36 @@ class _CourseScreenState extends State<CourseScreen> {
         ],
       ),
     );
+  }
+  @override
+  dispose() {
+    var color = Colors.white;
+    bool isDarkMode = false;
+    try {
+      var brightness = MediaQuery.of(context).platformBrightness;
+      isDarkMode = brightness == Brightness.dark;
+      if (isDarkMode) {
+        color = Colors.black;
+      }
+    }on Exception {
+      if (kDebugMode) {
+        print('Error on getting system theme for system navigation bar on course.page.dart - On Dispose');
+      }
+    }
+    finally{
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          systemNavigationBarColor: color,
+        ));
+      });
+    }
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
   }
 }

@@ -6,7 +6,7 @@ import 'package:ristal_institute/utils/Constant/constant.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 
-Widget drawerHeader(String imgVal, String instructor) {
+Widget drawerHeader(String imgVal, String instructor, VoidCallback onTap) {
   return Container(
     width: double.infinity,
     child: ListView(
@@ -17,7 +17,12 @@ Widget drawerHeader(String imgVal, String instructor) {
           child: CircleAvatar(
             backgroundColor: Colors.white,
             //backgroundImage: AssetImage("assets/icons/profile_pic.png"),
-            child: Image.asset("assets/icons/profile_pic.png", height: 148.0, width: 148.0,),
+            child: InkWell(
+                onTap: onTap,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(74.0),
+                    child: Image.asset("assets/icons/profile_pic.png", height: 148.0, width: 148.0,))
+            ),
           ),
         ),
 
@@ -74,7 +79,7 @@ Widget firstlist(String imgVal, String instructor) {
 Widget drawerList(String text, VoidCallback onTap, String icon) {
   return Container(
     child: Padding(
-      padding: const EdgeInsets.only(bottom: 2.0, left: 16.0, right: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListTile(
         onTap: onTap,
         leading: ImageIcon(AssetImage(icon)),
@@ -92,23 +97,31 @@ Widget drawerList(String text, VoidCallback onTap, String icon) {
 }
 
 Widget homeScreen(String titleText, String subTitle) {
-  return ListTile(
-    title: Text.rich(
-      TextSpan(
-        text: titleText,
-        style: const TextStyle(
-            fontWeight: FontWeight.bold, color: Colors.green, fontSize: 28),
-        children: <TextSpan>[
-          TextSpan(
-            text: subTitle,
-        style: const TextStyle(
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-              fontSize: 15,
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: ListTile(
+      title: Text.rich(
+        textAlign: TextAlign.center,
+        TextSpan(
+          text: titleText,
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.green, fontSize: 28, fontFamily: 'Quicksand'),
 
-            ),
+        ),
+      ),
+      subtitle: Text.rich(
+        textAlign: TextAlign.justify,
+        TextSpan(
+          text: subTitle,
+          style: const TextStyle(
+            fontFamily: 'Rubik',
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 15,
+
           ),
-        ],
+        ),
+
       ),
     ),
   );

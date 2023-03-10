@@ -20,7 +20,7 @@ class CustomAppBar {
           );
         },
       ),
-      title: Text(title, style: TextStyle(color: Colors.white),),
+      title: Text(title, style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500),),
       backgroundColor: Colors.green,
     );
   }
@@ -37,7 +37,7 @@ class CustomAppBar {
           );
         },
       ),
-      title: Text(title, style: TextStyle(color: Colors.white),),
+      title: Text(title, style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500),),
       backgroundColor: Colors.green,
     );
   }

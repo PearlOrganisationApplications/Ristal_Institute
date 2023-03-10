@@ -8,7 +8,6 @@ Widget welcomeTextLogin() {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       vSizedBox5,
-      vSizedBox1,
       Hero(
         tag: "logo",
         child: Image.asset(

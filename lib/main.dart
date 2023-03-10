@@ -5,7 +5,11 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:ristal_institute/App/Provider/app.provider.dart';
 import 'package:ristal_institute/App/Routes/app_route.dart';
 
-void main() {
+import 'App/Preferences/app_preferences.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppPreferences.init();
   runApp(
     MultiProvider(
       providers: AppProvider.providers,

@@ -32,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
       Future.delayed(const Duration(seconds: 2), () {
         isLoading = false;
         setState(() {});
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen())
         );
       });
     }
@@ -56,102 +56,106 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            welcomeTextLogin(),
-            vSizedBox2,
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-                          child: CustomTextField.customEmailField(
-                            textEditingController: userEmailController,
-                            hintText: 'Enter an email',
-                            validator: (val) =>
-                                !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                                        .hasMatch(val!)
-                                    ? 'Enter an email'
-                                    : null,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              welcomeTextLogin(),
+              vSizedBox2,
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
+                            child: CustomTextField.customEmailField(
+                              textEditingController: userEmailController,
+                              hintText: 'Enter an email',
+                              validator: (val) =>
+                                  !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                                          .hasMatch(val!)
+                                      ? 'Enter an email'
+                                      : null,
+                            ),
                           ),
-                        ),
-                        vSizedBox1,
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-                          child: CustomTextField.customPasswordField(
-                            textEditingController: userPassController,
-                            hintText: 'Enter a password',
-                            validator: (val) =>
-                                val!.isEmpty ? 'Enter a password' : null,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  vSizedBox2,
-                  MaterialButton(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    minWidth: MediaQuery.of(context).size.width * 0.8,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    onPressed: () async {
-                      // _userLogin();
-                      login();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const HomeScreen()));
-                    },
-                    color: Colors.greenAccent,
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Colors.black38,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
+                          vSizedBox1,
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
+                            child: CustomTextField.customPasswordField(
+                              textEditingController: userPassController,
+                              hintText: 'Enter a password',
+                              validator: (val) =>
+                                  val!.isEmpty ? 'Enter a password' : null,
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  )
-                ],
+                    vSizedBox3,
+                    MaterialButton(
+                      height: 56.0,
+                      elevation: 20,
+                      minWidth: MediaQuery.of(context).size.width * 0.8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      onPressed: () async {
+                        // _userLogin();
+                        login();
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const HomeScreen()));
+                      },
+                      color: Colors.lightGreen,
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 24,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            vSizedBox2,
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     const Text(
-            //       "Not Having A Account? ",
-            //       style: TextStyle(
-            //
-            //         fontSize: 14.0,
-            //       ),
-            //     ),
-            //     GestureDetector(
-            //       onTap: (){}
-            //
-            //       ,child: const Text(
-            //         "Sign up",
-            //         style: TextStyle(
-            //           decoration: TextDecoration.underline,
-            //
-            //           fontSize: 14.0,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-          ],
+              vSizedBox5,
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     const Text(
+              //       "Not Having A Account? ",
+              //       style: TextStyle(
+              //
+              //         fontSize: 14.0,
+              //       ),
+              //     ),
+              //     GestureDetector(
+              //       onTap: (){}
+              //
+              //       ,child: const Text(
+              //         "Sign up",
+              //         style: TextStyle(
+              //           decoration: TextDecoration.underline,
+              //
+              //           fontSize: 14.0,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+            ],
+          ),
         ),
       ),
     );
