@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ristal_institute/Src/Screens/Course/Widgets/course.widget.dart';
@@ -195,7 +196,7 @@ class _CourseScreenState extends State<CourseScreen> {
     var color = Colors.white;
     bool isDarkMode = false;
     try {
-      var brightness = MediaQuery.of(context).platformBrightness;
+      var brightness = SchedulerBinding.instance.platformDispatcher.platformBrightness;
       isDarkMode = brightness == Brightness.dark;
       if (isDarkMode) {
         color = Colors.black;

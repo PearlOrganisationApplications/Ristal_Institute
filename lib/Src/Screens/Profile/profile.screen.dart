@@ -21,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    userName = AppPreferences.getDisplayName(AppKeys.userData);
+    userName = AppPreferences.getDisplayName(AppKeys.userDisplayName);
     userEmail = AppPreferences.getEmailAddress(AppKeys.userEmail);
     super.initState();
   }
@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child:
-                        CircleAvatarWithTitle("assets/images/pic1.jpg", userName.toString()),
+                        CircleAvatarWithTitle("assets/icons/profile_pic.png", userName.toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 18.0),
@@ -62,14 +62,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       () {}, Icons.class_rounded, "BSc CS", "Student Course"),
                   profileCard(
                       () {}, Icons.school_rounded, "Computer", "Course Branch"),
-                  Padding(
+
+
+                  ///Logout button provided in drawer
+                  /*Padding(
                     padding: const EdgeInsets.all(32.0),
                     child: SizedBox(
                         height: 50,
                         width: 100,
                         child: ElevatedButton(
-                            onPressed: () {}, child: const Text("Sign-out"))),
-                  )
+                            onPressed: () {}, child: const Text("Sign-out", style: TextStyle(fontSize: 20)))),
+                  )*/
                 ],
               ),
             );

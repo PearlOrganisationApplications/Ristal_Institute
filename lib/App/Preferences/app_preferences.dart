@@ -10,18 +10,18 @@ class AppPreferences {
 
   ///User Display Name getter
   static String? getDisplayName(String displayName) {
-    String? s = _preferences.getString(AppKeys.userData);
+    String s = _preferences.getString(AppKeys.userDisplayName) ?? 'Dummy Name';
     return s!;
   }
 
   ///User Display Name Setter
   static void setDisplayName( String displayName){
-    _preferences.setString(AppKeys.userData, displayName);
+    _preferences.setString(AppKeys.userDisplayName, displayName);
   }
 
   ///User Email getter
   static String? getEmailAddress(String email) {
-    String? s = _preferences.getString(AppKeys.userEmail);
+    String s = _preferences.getString(AppKeys.userEmail) ?? 'dummy@email.today';
     return s!;
   }
 

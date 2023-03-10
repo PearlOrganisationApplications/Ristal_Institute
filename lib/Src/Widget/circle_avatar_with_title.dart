@@ -33,14 +33,17 @@ Widget CircleAvatarWithTitle(String imgVal, String instructor) {
             ),
           ),
 
-          Text(
-            instructor,
-            style: const TextStyle(
-              fontSize: CustomFontSize.kUserTitleName,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
+              instructor,
+              style: const TextStyle(
+                fontSize: 30,
+                color: Colors.black45,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         ],
       ),

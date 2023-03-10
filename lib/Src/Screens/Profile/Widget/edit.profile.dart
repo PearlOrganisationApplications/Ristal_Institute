@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ristal_institute/App/Preferences/app_preferences.dart';
 
 import 'package:ristal_institute/Src/Screens/Profile/profile.screen.dart';
 import 'package:ristal_institute/utils/Constant/App%20Key/key.dart';
@@ -11,17 +12,14 @@ class ProfileEdit {
     TextEditingController nameChangeController = TextEditingController();
     TextEditingController emailChangeController = TextEditingController();
 
-    save() async {
-      prefs = await SharedPreferences.getInstance();
-      prefs.setString(
-        AppKeys.userData,
+    save() {
+      AppPreferences.setDisplayName(
         nameChangeController.text.toString(),
       );
     }
 
-    emailSave() async {
-      prefs = await SharedPreferences.getInstance();
-      prefs.setString(AppKeys.userEmail, emailChangeController.text.toString());
+    emailSave() {
+      AppPreferences.setEmailAddress(emailChangeController.text.toString());
     }
 
     return showGeneralDialog(

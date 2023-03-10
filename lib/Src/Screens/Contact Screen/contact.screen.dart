@@ -66,14 +66,7 @@ class _ContactScreenState extends State<ContactScreen> {
       appBar: CustomAppBar.customAppBarWithBack(title: "Contact Us"),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-
-
-            ///Commented recipient TextField for Single mail address
             /*Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
               child: TextField(
@@ -88,91 +81,61 @@ class _ContactScreenState extends State<ContactScreen> {
             ),*/
 
             Container(
-              padding: EdgeInsets.only(bottom: 32.0),
+              width: MediaQuery.of(context).size.width,
+              height: 250,
               decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Colors.green, width: 0)),
+                border: Border(top: BorderSide(width: 0, color: Colors.green)),
               ),
-                height: 250,
-                width: double.infinity,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(40)),
-                    child: Image.asset("assets/images/contact_us.jpg", fit: BoxFit.fill,)
-                )
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(25)),
+                child: Image.asset("assets/images/contact_us.jpg", fit: BoxFit.fill,),
+              ),
             ),
-
-            //Spacer(flex: 1),
-
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+              padding: const EdgeInsets.only(top: 32.0, left: 32.0, right: 32.0),
               child: TextField(
+                //autofocus: true,
+                style: TextStyle(fontSize: 20),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
                 controller: _subjectController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Subject',
+                  labelStyle: TextStyle(fontSize: 30),
                   hintText: "Write Subject here",
+                  hintStyle: TextStyle(fontSize: 20),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+              padding: const EdgeInsets.only(top:8.0, bottom: 32.0, left: 32.0, right: 32.0),
               child: TextField(
+                style: TextStyle(fontSize: 20),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
                 controller: _bodyController,
-                maxLines: 5,
-                minLines: 3,
-                //expands: true,
-                style: const TextStyle(fontSize: 18),
+                minLines: 5,
+                maxLines: 7,
                 textAlignVertical: TextAlignVertical.top,
                 decoration: const InputDecoration(
-
                   border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   labelText: 'Message',
                   alignLabelWithHint: true,
-                  contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   hintText: "Write message here...",
+                  labelStyle: TextStyle(fontSize: 30),
                   hintStyle: TextStyle(
+                    fontSize: 20
                     // color: AppColors.blueZodiac,
                   ),
-                  /*enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12),
-                    ),
-                    borderSide: BorderSide(
-                      width: 1.5,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
-                  ),*/
+
                 ),
               ),
             ),
 
-
-            ///Commented Checkbox ListTile for no use in this screen
-            /*CheckboxListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 32.0),
-              title: const Text('HTML'),
-              onChanged: (bool? value) {
-                if (value != null) {
-                  setState(() {
-                    isHTML = value;
-                  });
-                }
-              },
-              value: isHTML,
-            ),*/
-
-
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32.0),
+              padding: EdgeInsets.only(bottom: 32.0),
               child: ElevatedButton(onPressed: send, style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white10,
                 backgroundColor: Colors.green,
@@ -180,14 +143,10 @@ class _ContactScreenState extends State<ContactScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
+              ),
+              ), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
               ),
             ),
-
-            //Spacer(flex: 2),
-
-
-            ///No use of Address in this Screen
             /*Padding(
               padding: const EdgeInsets.only(left: 50.0),
               child: Column(
@@ -253,5 +212,13 @@ class _ContactScreenState extends State<ContactScreen> {
         ),
       ),
     );
+  }
+}
+
+Future<void> _launchURL(String url) async {
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
+  } else {
+    print("Could Not Launch $url");
   }
 }

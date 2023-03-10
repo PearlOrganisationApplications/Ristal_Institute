@@ -51,7 +51,7 @@ class AuthenticationNotifier with ChangeNotifier {
       dynamic authData = parseData['data'];
 
       if (isAuthenticated) {
-        WriteCache.setString(key: AppKeys.userData, value: authData)
+        WriteCache.setString(key: AppKeys.userDisplayName, value: authData)
             .whenComplete(
           () => Navigator.of(context).pushReplacementNamed(AppRouter.homeRoute),
         );

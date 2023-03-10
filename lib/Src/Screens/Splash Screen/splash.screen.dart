@@ -18,26 +18,35 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(milliseconds: 2000),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const LoginScreen())));
+            context, MaterialPageRoute(builder: (context) => LoginScreen())));
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-              child: Hero(
-                tag: "logo",
-                child: Image.asset(
-            "assets/images/Logo.PNG",
-            height: 200,
-            width: 200,
-          ),
-              )),
-        ],
+      body: Container(
+        color: Colors.green,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+                child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                  elevation: 8,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Hero(
+                      tag: "logo",
+                      child: Image.asset(
+              "assets/images/Logo.PNG",
+              height: 150,
+              width: 150,
+            ),
+                    ),
+                  ),
+                )),
+          ],
+        ),
       ),
     );
   }
