@@ -20,7 +20,7 @@ class CustomAppBar {
           );
         },
       ),
-      title: Text(title, style: TextStyle(color: Colors.white),),
+      title: Text(title, style: const TextStyle(color: Colors.white),),
       backgroundColor: Colors.green,
     );
   }
@@ -32,12 +32,12 @@ class CustomAppBar {
           return IconButton(onPressed: () {
             Navigator.pop(context);
             },
-              icon: Icon(Icons.arrow_back_ios_new_rounded),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
               color: Colors.white,
           );
         },
       ),
-      title: Text(title, style: TextStyle(color: Colors.white),),
+      title: Text(title, style: const TextStyle(color: Colors.white),),
       backgroundColor: Colors.green,
     );
   }

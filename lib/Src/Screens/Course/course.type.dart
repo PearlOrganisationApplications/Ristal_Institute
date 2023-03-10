@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ristal_institute/Src/Screens/Course/course.page.dart';
 import 'package:ristal_institute/Src/Widget/custom_appbar.dart';
-import 'package:ristal_institute/models/courseTypeModel.dart';
 
 import '../Home Sceen/Widgets/home.page.widget.dart';
 

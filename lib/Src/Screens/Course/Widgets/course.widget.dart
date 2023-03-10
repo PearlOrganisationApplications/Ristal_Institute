@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../about.course.dart';
-import '../detail.course.dart';
 
 
 Widget courseDetailCard(BuildContext context, List<String> headingArr, List<String> subHeadingArr, List<String> videoLinkArr/*VoidCallback onTap, String heading, String subHeading*/){
@@ -40,8 +39,8 @@ Widget courseDetailCard(BuildContext context, List<String> headingArr, List<Stri
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(headingArr[index], style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500, ), textAlign: TextAlign.left,),
-                        Text(subHeadingArr[index],   style: TextStyle(color: Colors.black54, fontSize: 20, fontWeight: FontWeight.w300,), textAlign: TextAlign.left,),
+                        Text(headingArr[index], style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500, ), textAlign: TextAlign.left,),
+                        Text(subHeadingArr[index],   style: const TextStyle(color: Colors.black54, fontSize: 20, fontWeight: FontWeight.w300,), textAlign: TextAlign.left,),
 
                       ],
                     ),
@@ -80,7 +79,7 @@ Widget courseCard(BuildContext context, VoidCallback onTap, courseImage, courseI
       padding: const EdgeInsets.all(32.0),
       child: Column(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Stack(
             children: [
               InkWell(
@@ -101,7 +100,7 @@ Widget courseCard(BuildContext context, VoidCallback onTap, courseImage, courseI
 
                     },
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         color: Colors.white
                       ),
@@ -112,8 +111,8 @@ Widget courseCard(BuildContext context, VoidCallback onTap, courseImage, courseI
                             padding: const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0,),
                             child: Image.asset("assets/icons/star.png", height: 30, width: 30),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0, left: 4.0),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0, left: 4.0),
                             child: Text("4.8", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),),
                           ),
                         ],
@@ -150,18 +149,18 @@ Widget courseCard(BuildContext context, VoidCallback onTap, courseImage, courseI
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(courseName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                    Text(courseName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                     Row(
                       children: [
                         Image.asset("assets/icons/contact.png", height: 20, width: 20,),
-                        Text(courseInstructorName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54),),
+                        Text(courseInstructorName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54),),
                       ],
                     )
                   ],
                 )
             ),
           ),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
         ],
       ),
     ),
