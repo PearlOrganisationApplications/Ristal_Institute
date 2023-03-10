@@ -1,9 +1,6 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:ristal_institute/models/courseTypeModel.dart';
 import 'package:ristal_institute/utils/Constant/constant.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 
 Widget drawerHeader(String imgVal, String instructor, VoidCallback onTap) {
@@ -49,7 +46,7 @@ Widget firstlist(String imgVal, String instructor) {
       children: <Widget>[
 
         Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset(

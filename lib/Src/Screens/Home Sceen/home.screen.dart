@@ -2,16 +2,13 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 import 'package:ristal_institute/Src/Screens/AboutScreen/about.screen.dart';
 
 import 'package:ristal_institute/Src/Screens/Contact%20Screen/Widget/contact.widget.dart';
-import 'package:ristal_institute/Src/Screens/Course/course.page.dart';
 import 'package:ristal_institute/Src/Screens/Home%20Sceen/Widgets/home.page.widget.dart';
 import 'package:ristal_institute/Src/Screens/LoginScreen/login_screen.dart';
 import 'package:ristal_institute/Src/Screens/Profile/profile.screen.dart';
-import 'package:ristal_institute/utils/Constant/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../Widget/custom_appbar.dart';
