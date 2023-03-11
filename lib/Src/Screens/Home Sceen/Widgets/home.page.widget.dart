@@ -1,42 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:ristal_institute/Src/Widget/circle_avatar_with_title.dart';
 import 'package:ristal_institute/utils/Constant/constant.dart';
-
-
-Widget drawerHeader(String imgVal, String instructor, VoidCallback onTap) {
-  return Container(
-    width: double.infinity,
-    child: ListView(
-      children: <Widget>[
-
-        Container(
-          height: 150,
-          child: CircleAvatar(
-            backgroundColor: Colors.white,
-            //backgroundImage: AssetImage("assets/icons/profile_pic.png"),
-            child: InkWell(
-                onTap: onTap,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(74.0),
-                    child: Image.asset("assets/icons/profile_pic.png", height: 148.0, width: 148.0,))
-            ),
-          ),
-        ),
-
-        Text(
-          instructor,
-          style: const TextStyle(
-            fontSize: 24.0,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
-}
-
 
 
 Widget firstlist(String imgVal, String instructor) {

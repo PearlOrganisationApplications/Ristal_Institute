@@ -2,6 +2,8 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:ristal_institute/App/Preferences/app_preferences.dart';
 
 import 'package:ristal_institute/Src/Screens/AboutScreen/about.screen.dart';
 
@@ -11,6 +13,7 @@ import 'package:ristal_institute/Src/Screens/LoginScreen/login_screen.dart';
 import 'package:ristal_institute/Src/Screens/Profile/profile.screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../Widget/circle_avatar_with_title.dart';
 import '../../Widget/custom_appbar.dart';
 import '../Contact Screen/contact.screen.dart';
 import '../Course/course.type.dart';
@@ -26,8 +29,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int carousalImageIndex = 0;
 
+
+  ///For Fullscreen
+  /*void hideSystemBottomNavigation() async {
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky, overlays: [SystemUiOverlay.top]);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.green));
+  }*/
   @override
   Widget build(BuildContext context) {
+    //hideSystemBottomNavigation();
+
     return Scaffold(
       appBar: CustomAppBar.customAppBarWithMenuButton(title: "Ristal University"),
       drawer: ClipRRect(
@@ -39,21 +50,33 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               Container(
-                height: 250,
+                height: 280,
                 child: DrawerHeader(
                   decoration:
                       const BoxDecoration(//color: AppColors.kPrimaryColor
                         color: Colors.green,
                          ),
-                  child: drawerHeader("assets/icons/profile_pic.png", "Robert Smith", () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfileScreen())
-                    );
+                  child: Center(
+                    child: InkWell(onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                      },
+                      child: CircleAvatarWithTitle(
+                          image: "assets/icons/profile_pic.png",
+                          imageHeight: 140.0,
+                          imageWidth: 140.0,
+                          imageBackgroundColor: Colors.white,
+                          title: AppPreferences.getDisplayName()!),
+    /*ClipRRect(
+          borderRadius: BorderRadius.circular(74.0),
+            child: Image.asset("assets/icons/profile_pic.png", height: 148.0, width: 148.0,))*/
+    ),
+    ),
+                  /*drawerHeader("", , () {
+
                   }
                   ),
-                ),
+                ),*/
+              ),
               ),
               drawerList(
                 "Home",
@@ -134,6 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
               drawerList(
                   "Logout",
                       () {
+                    AppPreferences.clearCredentials();
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(

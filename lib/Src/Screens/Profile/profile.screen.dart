@@ -21,8 +21,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    userName = AppPreferences.getDisplayName(AppKeys.userDisplayName);
-    userEmail = AppPreferences.getEmailAddress(AppKeys.userEmail);
+    userName = AppPreferences.getDisplayName();
+    userEmail = AppPreferences.getEmailAddress();
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child:
-                        CircleAvatarWithTitle("assets/icons/profile_pic.png", userName.toString()),
+                        CircleAvatarWithTitle(image: "assets/icons/profile_pic.png", imageBackgroundColor: Colors.black, imageHeight: 140.0, imageWidth: 140.0, title:userName.toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 18.0),

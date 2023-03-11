@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ristal_institute/App/Preferences/app_preferences.dart';
 
 import '../../Core/change.notifier.dart';
 import '../../Widget/custom.text.field.dart';
@@ -29,9 +30,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       isLoading = true;
       setState(() {});
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 1), () {
         isLoading = false;
-        setState(() {});
+        //setState(() {});
+        AppPreferences.saveCredentials(email: userEmailController.text, displayName: 'Vipin Negi');
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen())
@@ -40,9 +42,18 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    _userLogin() {
+
+    ///Unused code
+    /*_userLogin() {
       if (_formKey.currentState!.validate()) {
         var authNotifier =
             Provider.of<AuthenticationNotifier>(context, listen: false);
@@ -52,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
             userpassword: userPassController.text);
       }
     }
-
+*/
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,

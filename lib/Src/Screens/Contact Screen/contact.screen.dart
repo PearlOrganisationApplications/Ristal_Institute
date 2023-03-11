@@ -102,7 +102,7 @@ class _ContactScreenState extends State<ContactScreen> {
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Subject',
-                  labelStyle: TextStyle(fontSize: 30),
+                  labelStyle: TextStyle(fontSize: 20),
                   hintText: "Write Subject here",
                   hintStyle: TextStyle(fontSize: 20),
                 ),
@@ -124,7 +124,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   labelText: 'Message',
                   alignLabelWithHint: true,
                   hintText: "Write message here...",
-                  labelStyle: TextStyle(fontSize: 30),
+                  labelStyle: TextStyle(fontSize: 20),
                   hintStyle: TextStyle(
                     fontSize: 20
                     // color: AppColors.blueZodiac,
@@ -139,12 +139,12 @@ class _ContactScreenState extends State<ContactScreen> {
               child: ElevatedButton(onPressed: send, style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white10,
                 backgroundColor: Colors.green,
-                minimumSize: Size(90, 40),
+                minimumSize: Size(110, 50),
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
               ),
-              ), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 18),),
+              ), child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),),
               ),
             ),
             /*Padding(

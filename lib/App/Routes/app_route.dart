@@ -10,6 +10,7 @@ class AppRouter {
   static const String homeRoute = "/home";
 
 
+
   static Route? generateRounting(RouteSettings settings) {
     switch (settings.name) {
       case splashRoute:

@@ -14,7 +14,6 @@ class AboutScreen extends StatefulWidget {
 
 class _AboutScreenState extends State<AboutScreen> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.customAppBarWithBack(title: "About"),
@@ -32,7 +31,7 @@ class _AboutScreenState extends State<AboutScreen> {
             aboutScreen("Objectives",
                 "Offer an engaging learning environment using technology Provide clear learning objectives to enable students master the subject matter Provide clear assessment methods to promote motivation Conduct and disseminate research findings to improve the quality of living"),
             Padding(
-              padding: const EdgeInsets.all(50.0),
+              padding: const EdgeInsets.only(left: 50.0, right: 50.0, top: 50.0, bottom: 100.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

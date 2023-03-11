@@ -29,11 +29,6 @@ class _CourseScreenState extends State<CourseScreen> {
   initState() {
     super.initState();
 
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.green,
@@ -134,6 +129,7 @@ class _CourseScreenState extends State<CourseScreen> {
       body: Column(
         children: [
           Container(
+            padding: EdgeInsets.only(top: 24.0),
             decoration: BoxDecoration(
                 color: Colors.green,
                 border: Border.all(color: Colors.green, width: 0)),
@@ -154,33 +150,21 @@ class _CourseScreenState extends State<CourseScreen> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                elevation: 20,
-                //color: Color(0x9BB9F6B2),
-                shadowColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
-                ),
-                /*decoration: BoxDecoration(
-                    color: Color(0x9BB9F6B2),
-                    border: Border.symmetric(horizontal: BorderSide(color: Colors.black12, width: 1))
-                ),*/
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: courseImages.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return courseCard(context, () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> CourseDetailScreen( title: courseNames[index],)));
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: courseImages.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return courseCard(context, () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> CourseDetailScreen( title: courseNames[index],)));
 
-                          }/*"Android Developement"*/, courseImages[index], courseInstructorNames[index], courseNames[index]);
-                        },
-                      ),
+                        }/*"Android Developement"*/, courseImages[index], courseInstructorNames[index], courseNames[index]);
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -191,6 +175,7 @@ class _CourseScreenState extends State<CourseScreen> {
       ),
     );
   }
+
   @override
   dispose() {
     var color = Colors.white;
@@ -214,12 +199,5 @@ class _CourseScreenState extends State<CourseScreen> {
       });
     }
 
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    super.dispose();
   }
 }

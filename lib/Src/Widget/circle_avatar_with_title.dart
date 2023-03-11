@@ -6,7 +6,15 @@ import 'package:flutter/material.dart';
 
 import '../../utils/Constant/constant.dart';
 
-Widget CircleAvatarWithTitle(String imgVal, String instructor) {
+Widget CircleAvatarWithTitle(
+    {
+      required String image,
+      required double imageHeight,
+      required double imageWidth,
+      required Color imageBackgroundColor,
+      required String title,
+    }
+    ) {
   return Container(
     width: double.infinity,
     child: Padding(
@@ -16,16 +24,16 @@ Widget CircleAvatarWithTitle(String imgVal, String instructor) {
         children: <Widget>[
 
           Container(
-            height: 141,
-            width: 141,
+            height: imageHeight+1,
+            width: imageWidth+1,
             child: CircleAvatar(
-              backgroundColor: Colors.black,
+              backgroundColor: imageBackgroundColor,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(70),
                 child: Image.asset(
-                    imgVal,
-                    width: 140,
-                    height: 140,
+                    image,
+                    width: imageWidth,
+                    height: imageHeight,
                     fit:BoxFit.fill
 
                 ),
@@ -36,7 +44,7 @@ Widget CircleAvatarWithTitle(String imgVal, String instructor) {
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
-              instructor,
+              title,
               style: const TextStyle(
                 fontSize: 30,
                 color: Colors.black45,

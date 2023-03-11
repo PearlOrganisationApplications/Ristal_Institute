@@ -1,5 +1,6 @@
 class AppKeys {
   static String appMode = 'darkMode';
+  static String isUserLogin = 'isUserLogin';
   static String userDisplayName = 'Name';
   static String userEmail ="Email";
   static String razorKey = 'rzp_test_ImLClDOqMc2kc1';
